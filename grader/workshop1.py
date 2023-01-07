@@ -181,6 +181,10 @@ class Workshop1:
             print("\033[0;31m Incorrect.")
             self.q3b = False   
             
+
+    def hint3c(self):
+        print("This should be very similar to the plotting a 2D shape.")
+        print("Simply translate the points that you're given.")
     # RESULTS    ------------------------------------------------------
     
     def results(self):
