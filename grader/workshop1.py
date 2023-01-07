@@ -18,41 +18,64 @@ class Workshop1:
         
     # QUESTION 1 ------------------------------------------------------
     def hint1a(self,):
-        pass        
-    def check1a(self,F_a):
+        print("Apply the definition of the deformation gradient.")
+        print("You need to represent phi_a in an appropriate way. What")
+        print("data structure works with the function?")
+        
+    def check1a(self, F_a, homogeneous):
         X_1, X_2, X_3 = sym.symbols('X_1 X_2 X_3')
-        if F_a == Matrix([[1, 0, 0], [0, X_3, X_2], [0, 0, 1]]):
-            print("\033[1;32m Correct!")
-            self.q1a = True
+        if F_a == Matrix([[1, 0, 0],
+                          [0, X_3, X_2],
+                          [0, 0, 1]]):
+            if homogeneous==False:
+                print("\033[1;32m Correct!")
+                self.q1a = True
+            else:
+                print("\033[0;31m Incorrect. Recall the definition of homogeneity.")
+                self.q1a = False    
         else:
-            print("\033[0;31m Incorrect.")
+            print("\033[0;31m Incorrect. Check your answer for the deformation gradient.")
             self.q1a = False
         
     def hint1b(self,):
-        pass        
-    def check1b(self, F_b):
+        print("If you've solved the first question, the second should not")
+        print("be so diffcult. What do you notice about the form of the")
+        print("result?")        
+    def check1b(self, F_b, homogeneous):
         if F_b == Matrix([[2, 0, 0], [0, 0, 1], [5, 0, 0]]):
-            print("\033[1;32m Correct!")
-            self.q1b = True
+            if homogeneous==True:
+                print("\033[1;32m Correct!")
+                self.q1b = True
+            else:
+                print("\033[0;31m Incorrect. Recall the definition of homogeneity.")
+                self.q1b = False  
         else:
-            print("\033[0;31m Incorrect.")
+            print("\033[0;31m Incorrect. Check your answer for the deformation gradient.")
             self.q1b = False           
 
     def hint1c(self,):
-        pass        
+        print("The exponential might be hard to represent. Perhaps SymPy ")
+        print("can help you out?")        
     def check1c(self,F_c):
         X_1, X_2, X_3 = sym.symbols('X_1 X_2 X_3')
         if F_c == Matrix([[sym.exp(X_1), 0, 0], [0, 0, -1], [0, 1, 0]]):
-            print("\033[1;32m Correct!")
-            self.q1c = True
+            if homogeneous==False:
+                print("\033[1;32m Correct!")
+                self.q1c = True
+            else:
+                print("\033[0;31m Incorrect. Recall the definition of homogeneity.")
+                self.q1c = False  
         else:
-            print("\033[0;31m Incorrect.")
+            print("\033[0;31m Incorrect. Check your answer for the deformation gradient.")
             self.q1c = False             
 
     
     # QUESTION 2 ------------------------------------------------------
     def hint2a(self, ):
-        pass
+        print("The main difference here from above is how you'd represent phi.")
+        print("You will have the make an additional change to the input of the")
+        print("deformation gradient function.")
+
     def check2a(self, F_2):
         if F_2 == Matrix([[1.00000000000000, -1.50000000000000], 
                           [0, -1.50000000000000]]):
@@ -63,7 +86,10 @@ class Workshop1:
             self.q2a = False             
     
     def hint2b(self):
-        pass
+        print("The deformation expression can be thought of as a translation")
+        print("rule. The input in undeformed coordinates will be the output")
+        print("in deformed coordinates.")
+
     def check2b(self, deformed_corners):
         if deformed_corners == [[4.0, 2.0],
                                 [7.0, 5.0],
@@ -78,7 +104,14 @@ class Workshop1:
 
     
     def hint2c(self,):
-        pass
+        print("This question requires linear algebra. NumPy is your friend here.")
+        print("Array multiplication can be performed with np.dot(A, x), where A ")
+        print("is a matrix and x is a vector.")
+        print("You will also need to invert a matrix. There are a few ways of")
+        print("achieving this, but sympy has a neat trick where you simply raise")
+        print("the power of the matrix to -1.")
+
+        
     def check2c(self, e1, e2, E1, E2):
         ce1, ce2, cE1, cE2 = False, False, False, False
         if e1[0]==1 and e1[1]==0:
@@ -116,13 +149,19 @@ class Workshop1:
             
     # QUESTION 3 ------------------------------------------------------
     def hint3a(self):
-        pass
+        print("Recall the equation for the infinitesimal strain. What are the ")
+        print("separate operations it demands?")
+        print("One way of building an identity matrix in SymPy is using the eye")
+        print("method, Matrix.eye(N). N is the size of the identity matrix.")
+        print("You can calculate the transpose of the matrix A by simply")
+        print("writing A.T")
+
     
     def check3a(self, ifts):
         alpha, L = sym.symbols('alpha, L')
         if ifts == Matrix([[0, 0.5*alpha/L, 0], 
-                        [0.5*alpha/L, 0, 0],
-                        [0, 0, 0]]):
+                           [0.5*alpha/L, 0, 0],
+                           [0, 0, 0]]):
             print("\033[1;32m Correct!")
             self.q3a = True           
         else:
@@ -130,7 +169,10 @@ class Workshop1:
             self.q3a = False   
      
     def hint3b(self):
-        pass
+        print("Isochoric = isos + khora = equal + space.")
+        print("What does it mean for a a transformation to have equal space?")
+        print("Note that in this situation, space is volume.")
+
     def check3b(self, isochoric):
         if isochoric == True:
             print("\033[1;32m Correct!")
