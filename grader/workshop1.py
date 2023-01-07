@@ -56,7 +56,7 @@ class Workshop1:
     def hint1c(self,):
         print("The exponential might be hard to represent. Perhaps SymPy ")
         print("can help you out?")        
-    def check1c(self,F_c):
+    def check1c(self,F_c, homogeneous):
         X_1, X_2, X_3 = sym.symbols('X_1 X_2 X_3')
         if F_c == Matrix([[sym.exp(X_1), 0, 0], [0, 0, -1], [0, 1, 0]]):
             if homogeneous==False:
