@@ -183,8 +183,8 @@ class Workshop1:
             
 
     def hint3c(self):
-        print("This should be very similar to the plotting a 2D shape.")
-        print("Simply translate the points that you're given.")
+        print("This should be very similar to a previous problem.")
+        print("Simply translate the points that you are given.")
     # RESULTS    ------------------------------------------------------
     
     def results(self):
