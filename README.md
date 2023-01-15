@@ -14,3 +14,12 @@ cd px912_solids
 ```
 jupyter notebook
 ``` 
+
+## Getting new content
+You can get new content for each week by running these arguments:
+```
+git stash
+git pull
+git stash pop
+```
+This will allow you to keep all of the progress you've made whilst pulling all the material from each week.
