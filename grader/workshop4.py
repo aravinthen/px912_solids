@@ -57,59 +57,15 @@ class Workshop4:
     # Problem 2 ----------------------------------------------------------------------------------
     def hint2ai(self,):
         print("Check the previous workshops! You've probably coded this already.")        
-    def check2ai(self, ps):
-        answer = np.array([[32967032.96703297,  9890109.89010989,        0.        ],
-                           [ 9890109.89010989, 32967032.96703297,        0.        ],
-                           [       0.        ,        0.        , 11538461.53846154]])
-
-        if np.allclose(np.round(ps,5), np.round(answer, 5)):
-            print("\033[1;32m Correct!")
-            self.q2ai = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2ai = False           
 
     def hint2aii(self,):
         print("If a displacement is fixed, it cannot move.")
-    def check2aii(self, fixed_disp):
-        if set(fixed_disp) == set([0,1,2,3]):
-            print("\033[1;32m Correct!")
-            self.q2aii = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2aii = False                       
 
     def hint2aiii(self,):
         print("You need to map the coordinates (-1,-1), (1,-1), (-1,1) and (1,1) to the coordinates of the shape on the diagram.")
-    def check2aiii(self, funx, funy):
-        points = [(1,-1), (-1,1),(-1,-1), (1,1)]
-        solution = np.array([[2.0, 0.5], [0.0, 1.0], [0.0, 0.0], [2.0, 1.0]])
-        answer = np.array([[funx(i[0], i[1]), funy(i[0], i[1])] for i in points])
-        
-        if np.array_equal(np.round(solution,5), np.round(answer, 5)):
-            print("\033[1;32m Correct!")
-            self.q2aiii = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2aiii = False
             
     def hint2aiv(self,):        
         print("The expression for these are in the lecture notes.")
-    def check2aiv(self, N):
-        points = [(-1,1), (-1,-1), (1,-1), (1,1)]
-        solution = np.array([[0., 0., 0., 1.],
-                             [1., 0., 0., 0.],
-                             [0., 1., 0., 0.],
-                             [0., 0., 1., 0.]])
-
-        answer = np.array([N(i[0], i[1]) for i in points])
-        
-        if np.allclose(np.round(solution,5), np.round(answer, 5)):
-            print("\033[1;32m Correct!")
-            self.q2aiv = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2aiv = False
 
     def hint2bi(self,):
         print("1. Specifiy the quadrilateral in natural coordinates.")
@@ -131,81 +87,20 @@ class Workshop4:
         print("   Remember, you only need the component of ke that isn't fixed.")
         print("   Keep in mind that this is an integration. You will have to implement")
         print("   Gauss quadrature in order to carry this out.")        
-    def check2biii(self, ke):
-        answer = np.array([[ 18058716.4314975,    1584953.50803043, -15205800.11704272, 5071851.22569738],
-                             [  1584953.50803043,  44321396.05956174,   4120879.12087912, -43322875.34950256],
-                             [-15205800.11704272,   4120879.12087912,  24715521.1652253,  -10777683.85460693],
-                             [  5071851.22569738, -43322875.34950256, -10777683.85460693,   46651277.71636646]])
-        
-        if np.allclose(np.round(ke,5), np.round(answer, 5)):
-            print("\033[1;32m Correct!")
-            self.q2biii = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2biii = False           
 
     def hint2biv(self, ):
-        print("Which nodes actually have a force acting on them? Your answer should be multiplicable with the expression for the elemental stiffness matrix.")
-        
-    def check2biv(self, f_e):
-        answer = np.array([0, 0, 0, -20])
-        if np.array_equal(np.round(f_e,5), np.round(answer, 5)):
-            print("\033[1;32m Correct!")
-            self.q2biv = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2biv = False           
+        print("Which nodes actually have a force acting on them? Your answer should be multiplicable with the expression for the elemental stiffness matrix.")        
     
     def hint2ci(self,):
         print("Use np.linalg.solve to solve a linear system.")
         print("Your solution should be a vector of 4 values. Remember to add the displacements")
-        print("for nodes that were fixed! (basically, add a bunch of zeros).")
-    def check2ci(self, d_e):
-        answer = [ 0.00000000e+00,
-                   0.00000000e+00,
-                   0.00000000e+00,
-                   0.00000000e+00,                   
-                   3.22667984e-06,
-                   -1.11131358e-05,
-                   -1.11446419e-06,
-                   -1.13572362e-05]
-
-        if np.allclose(np.round(d_e,15), np.round(answer, 15)):
-            print("\033[1;32m Correct!")
-            self.q2ci = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2ci = False
-            
+        print("for nodes that were fixed! (basically, add a bunch of zeros).")            
 
     def hint2cii(self,):
         print("All required components are present. Use a for-loop to calculate each strain.")
-    def check2cii(self,strains):
-        answer = np.array([[-3.00787629e-07,  5.76789847e-08, -4.63842049e-06],
-                          [ 1.10045099e-06,  5.76789847e-08, -4.55962954e-06],
-                          [8.55994221e-07, 3.17860083e-07, 5.37521788e-08],
-                          [-1.21311271e-06,  3.17860083e-07, -6.25926864e-08]])
-        
-        if np.allclose(np.round(strains,5), np.round(answer, 5)):
-            print("\033[1;32m Correct!")
-            self.q2cii = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2cii = False        
     
     def hint2ciii(self,):
         print("Remember to use the Jacobian when summing the stresses!")
-    def check2ciii(self, sum_stress):
-        answer = [5.68434189e-14,
-                  8.44962902e+00,
-                  -4.00000000e+01]
-        
-        if np.allclose(np.round(answer,15), np.round(sum_stress, 15)):
-            print("\033[1;32m Correct!")
-            self.q2ciii = True
-        else:
-            print(f"\033[0;31m Incorrect.")
-            self.q2ciii = False        
 
             
     def results(self):
@@ -222,16 +117,7 @@ class Workshop4:
                        self.q2ciii]
         
         names = ["Question 1a",
-                 "Question 1b",
-                 "Question 2a,i",
-                 "Question 2a,ii",
-                 "Question 2a,iii",
-                 "Question 2a,iv",
-                 "Question 2b,iii",
-                 "Question 2b,iv",
-                 "Question 2c,i",
-                 "Question 2c,ii",
-                 "Question 2c,iii"]
+                 "Question 1b"]
 
         coupled = [(performance[i], names[i]) for i in range(len(performance))]
         
@@ -246,4 +132,3 @@ class Workshop4:
                 if i[0] == False:
                     print(i[1])
             print("Please feel free to reach out if you need any help.")
-
